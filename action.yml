@@ -1,0 +1,31 @@
+name: "Check Elastic Beanstalk Environment's Health"
+description: "Check the AWS Elastic Beanstalk environment's health."
+author: 'Amrane Ait Zeouay'
+runs:
+  using: 'node12'
+  pre: 'npm ci'
+  main: 'check-env.js'
+inputs:
+  aws_access_key:
+    description: 'AWS Access Key.'
+    required: true
+  aws_secret_key:
+    description: 'AWS Secret Key.'
+    required: true
+  region:
+    description: "AWS Environment's Region."
+    required: true
+  environment_name:
+    description: "Beanstalk environment's name."
+    required: true
+  wait_for_env:
+    description: 'The time in seconds to wait for the environment to be healthy. Default is 15 seconds.'
+    required: false
+
+outputs:
+  ebs_env:
+    description: 'The current environment of the application.'
+
+branding:
+  icon: 'arrow-up'
+  color: 'green'
